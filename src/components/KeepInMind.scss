@@ -1,0 +1,58 @@
+@import '../theme/index';
+
+.screen.choose {
+  > div {
+    @include full-screen;
+    @include flex-column;
+
+    .audio-controller {
+      > img {
+        height: 200px;
+        border: 1px solid grey;
+        box-shadow: 0 0 1px 1px grey;
+      }
+
+      margin-bottom: 16px;
+    }
+
+    .card-eng {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 2em;
+      position: relative;
+      height: 40px;
+      line-height: 40px;
+      margin-bottom: 40px;
+      font-weight: bold;
+
+      &:after {
+        height: 40px;
+        line-height: 40px;
+        content: '⤋';
+        position: absolute;
+        bottom: -40px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .card-rus {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 2em;
+    }
+
+    > input {
+      margin-top: 16px;
+      background: #37ab37;
+      border: none;
+      width: 400px;
+      outline: none;
+      text-align: center;
+      height: 40px;
+      line-height: 40px;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.2em;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@import '../theme/index';
+
+$act-level-rewards-width: 340px;
+$act-level-rewards-height: 60px;
+
+.screen.level-rewards {
+  @include full-screen;
+  @include flex-column;
+
+  .stats-time {
+    background: #fff;
+    border: 1px solid #4B515D;
+    box-shadow: 0 0 1px 1px #4B515D;
+    width: $act-level-rewards-width;
+    height: $act-level-rewards-height;
+    line-height: $act-level-rewards-height;
+    text-align: center;
+    font-family: Boogaloo;
+    font-size: 32px;
+  }
+
+  .stats-stars {
+    font-size: 80px;
+    color: orange;
+    margin: 0;
+    height: 100px;
+    line-height: 100px;
+  }
+
+  .feedback,
+  .reset {
+    width: $act-level-rewards-width;
+    outline: none;
+    border: none;
+    background: #428bca;
+    color: #fff;
+    margin-bottom: 8px;
+    height: $act-level-rewards-height;
+    line-height: $act-level-rewards-height;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    font-size: 24px;
+  }
+}

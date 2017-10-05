@@ -1,0 +1,211 @@
+{
+  "plugins": [
+    "react"
+  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "experimentalDecorators": true,
+      "impliedStrict": true,
+      "jsx": true
+    }
+  },
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "jquery": true
+  },
+  "rules": {
+    // possible errors
+    "valid-jsdoc": [2, {"requireReturn": false}],
+
+    // best practices
+    "accessor-pairs": 2,
+    "array-callback-return": 2,
+    "block-scoped-var": 2,
+    "complexity": [2, { "max": 10 }],
+    "curly": 2,
+    "default-case": 0,
+    "dot-location": [2, "property"],
+    "dot-notation": 2,
+    "eqeqeq": [2, "smart"],
+    "guard-for-in": 2,
+    "no-alert": 2,
+    "no-caller": 2,
+    "no-div-regex": 2,
+    "no-else-return": 0,
+    "no-empty-function": [2, { "allow": ["arrowFunctions"] }],
+    "no-eval": 2,
+    "no-extend-native": 2,
+    "no-extra-bind": 2,
+    "no-extra-label": 2,
+    "no-floating-decimal": 2,
+    "no-implicit-globals": 2,
+    "no-implied-eval": 2,
+    "no-invalid-this": 0,
+    "no-iterator": 2,
+    "no-labels": 2,
+    "no-lone-blocks": 2,
+    "no-loop-func": 2,
+    "no-magic-numbers": [1, { "ignore": [0, 1], "ignoreArrayIndexes": true, "enforceConst": true, "detectObjects": true }],
+    "no-multi-spaces": [2, { "ignoreEOLComments": true, "exceptions": { "VariableDeclarator": true } }],
+    "no-multi-str": 2,
+    "no-native-reassign": 2,
+    "no-new": 2,
+    "no-new-func": 2,
+    "no-new-wrappers": 2,
+    "no-octal-escape": 2,
+    "no-param-reassign": 2,
+    "no-proto": 2,
+    "no-redeclare": [2, { "builtinGlobals": true }], // (eslint recommended override)
+    "no-return-assign": 2,
+    "no-script-url": 2,
+    "no-self-compare": 2,
+    "no-sequences": 2,
+    "no-throw-literal": 2,
+    "no-unmodified-loop-condition": 2,
+    "no-unused-expressions": [2, { "allowShortCircuit": true, "allowTernary": true }],
+    "no-useless-call": 2,
+    "no-useless-concat": 2,
+    "no-useless-escape": 2,
+    "no-void": 2,
+    "no-with": 2,
+    "radix": [2, "as-needed"],
+    "wrap-iife": 2,
+    "yoda": 2,
+
+    // strict mode
+    "strict": 2,
+
+    // variables
+    "no-catch-shadow": 2,
+    "no-label-var": 2,
+    "no-shadow": [2, { "builtinGlobals": true, "hoist": "all", "allow": ["resolve", "reject", "done", "cb", "res", "rej", "name", "err", "evt"] }],
+    "no-shadow-restricted-names":  0,
+    "no-undef": [2, { "typeof": true }], // (eslint recommended override)
+    "no-undef-init": 2,
+    "no-use-before-define": [2,{ "functions": false, "classes": true, "variables": false }],
+
+    // stylistic issues
+    "array-bracket-spacing": 2,
+    "block-spacing": 2,
+    "brace-style": 2,
+    "camelcase": 2,
+    "comma-spacing": 2,
+    "comma-style": 2,
+    "computed-property-spacing": 2,
+    "consistent-this": [2, "that"],
+    "eol-last": 2,
+    "func-names": 2,
+    "func-style": [2, "expression", { "allowArrowFunctions": true }],
+    "id-length": [2, { "exceptions": ["i", "j", "k", "e", "$", "_", "x", "y", "z"] }],
+    "indent": [2, 2, { "SwitchCase": 1, "VariableDeclarator": 1 }],
+    "jsx-quotes": 2,
+    "key-spacing": 2,
+    "keyword-spacing": 2,
+    "linebreak-style": [0, "windows"],
+    "max-depth": 2,
+    "max-len": [2, { "code": 140, "tabWidth": 2, "ignoreUrls": true}],
+    "max-nested-callbacks": [2, { "max": 6 }],
+    "max-params": [2, { "max": 5 }],
+    "max-statements": [2, 40, { "ignoreTopLevelFunctions": true }],
+    "max-statements-per-line": 2,
+    "new-cap": 2,
+    "new-parens": 2,
+    "newline-after-var": 2, // ?
+    "newline-before-return": 2,
+    "newline-per-chained-call": [2, { "ignoreChainWithDepth": 3 }],
+    "no-array-constructor": 2,
+    "no-bitwise": 2,
+    "no-lonely-if": 2,
+    "no-multiple-empty-lines": [2, { "max": 2, "maxEOF": 1, "maxBOF": 0 }],
+    "no-new-object": 2,
+    "no-spaced-func": 2,
+    "no-trailing-spaces": 2,
+    "no-unneeded-ternary": 2,
+    "no-whitespace-before-property": 2,
+    "object-curly-spacing": [2, "always"],
+    "object-property-newline": 0,
+    "one-var": [2, { "uninitialized": "always", "initialized": "never" }],
+    "one-var-declaration-per-line": [2, "initializations"],
+    "operator-linebreak": [2, "before"],
+    "quote-props": [2, "as-needed", { "numbers": true }],
+    "quotes": [2, "single", { "avoidEscape": true }],
+    "semi": 2,
+    "semi-spacing": 2,
+    "space-before-blocks": 2,
+    "space-before-function-paren": [2, "never"],
+    "space-in-parens": 2,
+    "space-infix-ops": 2,
+    "space-unary-ops": 2,
+    "wrap-regex": 2,
+
+    // es6
+    "arrow-parens": 2,
+    "arrow-spacing": 2,
+    "generator-star-spacing": [2, "after"],
+    "no-confusing-arrow": [2, { "allowParens": true }],
+    "no-duplicate-imports": 0,
+    "no-useless-computed-key": 2,
+    "no-useless-constructor": 2,
+    "no-var": 2,
+    "object-shorthand": 2,
+    "prefer-arrow-callback": [2, { "allowNamedFunctions": true, "allowUnboundThis": false }],
+    "prefer-const": 2,
+    "prefer-reflect": 0,
+    "prefer-rest-params": 2,
+    "prefer-spread": 2,
+    "require-yield": 2,
+    "sort-imports": [0, { "ignoreCase": true, "ignoreMemberSort": false, "memberSyntaxSortOrder": ["single", "all", "multiple", "none"] }],
+    "template-curly-spacing": 2,
+    "yield-star-spacing": [2, "after"],
+
+    "react/prop-types": [2, { "ignore": [ "children", "dispatch" ]}], // require propTypes
+    // "react/no-children-prop": 2, // forbid <Component children={child}/> expression
+    "react/no-danger": 2, // Prevent usage of dangerous JSX properties
+    "react/no-did-mount-set-state": 2, // Prevent usage of setState in componentDidMount
+    "react/no-did-update-set-state": 2, // Prevent usage of setState in componentDidUpdate
+    "react/no-multi-comp": [2, { "ignoreStateless": true }], // Prevent multiple component definition per file
+    "react/no-string-refs": 2, // Prevent using string references in ref attribute.
+    "react/no-unknown-property": 2, // Prevent usage of unknown DOM property (fixable)
+    "react/no-unused-prop-types": 2, // Prevent definitions of unused prop types
+    "react/prefer-es6-class": [2, "always"], // Enforce ES5 or ES6 class for React Components
+    "react/self-closing-comp": 2, // Prevent extra closing tags for components without children (fixable)
+    "react/sort-comp": 2, // Enforce component methods order
+    "react/sort-prop-types": [0, { "ignoreCase": true, "requiredFirst": true, "callbacksLast": true } ], // Enforce propTypes declarations alphabetical sorting
+    // "react/require-default-props": 2, // Enforce a defaultProps definition for every prop that is not a required prop
+
+    "react/jsx-boolean-value": [2, "always"],
+    "react/jsx-closing-bracket-location": [ // Validate closing bracket location in JSX (fixable)
+      2,
+      {
+        "selfClosing": "after-props",
+        "nonEmpty": "after-props"
+      }
+    ],
+    "react/jsx-curly-spacing": 2, // disallow spaces inside of curly braces in JSX attributes (fixable)
+    "react/jsx-equals-spacing": 2, // disallow spaces around equal signs in JSX attributes (fixable)
+    "react/jsx-filename-extension": 2, // Restrict file extensions that may contain JSX
+    "react/jsx-indent": [2, 2], // Validate props indentation in JSX (fixable)
+    "react/jsx-indent-props": [2, 2], // Validate props indentation in JSX (fixable)
+    "react/jsx-key": 2, // Validate JSX has key prop when in array or iterator
+    "react/jsx-max-props-per-line": [  // Limit maximum of props on a single line in JSX
+      2,
+      {
+        "maximum": 4
+      }
+    ],
+    "react/jsx-no-comment-textnodes": 2,
+    "react/jsx-pascal-case": 2, // Enforce PascalCase for user-defined JSX components
+    "react/jsx-sort-props": [0, { "ignoreCase": true, "callbacksLast": true }], // Enforce props alphabetical sorting
+    "react/jsx-space-before-closing": [2, "never"], // Validate spacing before closing bracket in JSX (fixable)
+    "react/jsx-wrap-multilines": 2 // Prevent missing parentheses around multilines JSX (fixable)
+
+  }
+}

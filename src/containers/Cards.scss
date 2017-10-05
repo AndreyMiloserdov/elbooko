@@ -1,0 +1,13 @@
+@import '../theme/index';
+
+@font-face {
+  font-family: Boogaloo;
+  src: url('../theme/fonts/Boogaloo-Regular.woff');
+}
+
+html, body,
+div[role="main"],
+div.app-cards,
+div.screen {
+  @include full-screen;
+}

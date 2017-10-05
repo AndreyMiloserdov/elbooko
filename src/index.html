@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>English: Cards</title>
+  <meta charset="utf-8" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
+
+  <script src="js/vendor.bundle.js"></script>
+
+  <script src="/rest/sets"></script>
+
+  <style>
+    ul {
+      list-style: none;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+   let html = '<ul>';
+   const len = list.length;
+
+   const redirect = function(inx) {
+     location.href = '/cards?' + list[inx].dir.split('.')[0];
+   }
+
+   for (let i = 0; i < len; i++) {
+     html += '<li><a onclick="redirect(' + i + ')" class="btn btn-primary">set ' + list[i].num + '</a></li>'
+   }
+
+   html += '</ul>';
+
+   document.body.innerHTML = html;
+  </script>
+</body>
+</html>
