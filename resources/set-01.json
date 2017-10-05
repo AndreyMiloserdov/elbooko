@@ -1,0 +1,37 @@
+[
+  {
+    "eng": "ant",
+    "rus": "муравей",
+    "audio": [ "ant-01", "ant-02" ]
+  },
+  {
+    "eng": "bed",
+    "rus": "кровать",
+    "audio": [ "bed-01", "bed-02" ]
+  },
+  {
+    "eng": "box",
+    "rus": "коробка",
+    "audio": [ "box-01", "box-02" ]
+  },
+  {
+    "eng": "cat",
+    "rus": "кошка",
+    "audio": [ "cat-01", "cat-02" ]
+  },
+  {
+    "eng": "dog",
+    "rus": "собака",
+    "audio": [ "dog-01", "dog-02" ]
+  },
+  {
+    "eng": "egg",
+    "rus": "яйцо",
+    "audio": [ "egg-01", "egg-02" ]
+  },
+  {
+    "eng": "flag",
+    "rus": "флаг",
+    "audio": [ "flag-01", "flag-02" ]
+  }
+]
