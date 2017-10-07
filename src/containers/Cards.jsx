@@ -13,9 +13,8 @@ import Loading from '../components/Loading';
 import KeepInMind from '../components/KeepInMind';
 import LabelPicture from '../components/LabelPicture';
 import ListenAndFind from '../components/ListenAndFind';
-import Choose from '../components/Choose';
-import Translate from '../components/Translate';
 import FITB from '../components/FITB';
+import Finish from '../components/Finish';
 
 const SCREENS = [
   {
@@ -41,6 +40,9 @@ const SCREENS = [
   {
     view: FITB,
     showRewards: true,
+  },
+  {
+    view: Finish
   }
 ];
 
@@ -57,12 +59,14 @@ class Cards extends Component {
     this.state = {
       screen: 0,
       result: null,
-      isScreen: true
+      isScreen: true,
+      instanceTimestamp: Date.now()
     };
 
     this.setName = '';
 
     this.actions = {
+      goHome: this._goToHome.bind(this),
       showNextScreen: this._showNextScreen.bind(this),
       resetThisScreen: this._resetThisScreen.bind(this),
       serviceActions: bindActionCreators(serviceActions, this.props.dispatch)
@@ -87,6 +91,10 @@ class Cards extends Component {
       .catch((err) => this._errorData(err));
   }
 
+  _goToHome() {
+    location.href = '/';
+  }
+
   _initData(data) {
     const { name, set, stats } = data;
 
@@ -99,10 +107,9 @@ class Cards extends Component {
   }
 
   _resetThisScreen() {
-    console.log(222, this.state.isScreen);
-    
     this.setState({
-      isScreen: true
+      isScreen: true,
+      instanceTimestamp: Date.now()
     });
   }
 
@@ -145,9 +152,12 @@ class Cards extends Component {
       model: this.props.state,
       actions: this.actions.serviceActions,
       onComplete: this.actions.showNextScreen,
+      instanceTimestamp: this.state.instanceTimestamp,
       ...props
     };
     const rewardsProps = {
+      setName: this.setName,
+      actName: Screen.TYPE,
       spentTime: result.spentTime,
       attemptsFailured: result.attemptsFailured,
       onComplete: this.actions.showNextScreen,
@@ -157,6 +167,14 @@ class Cards extends Component {
 
     return (
       <div className="elbooko app-cards">
+        <div className="base-menu">
+          <button
+            className="bttn-home"
+            onClick={this.actions.goHome}/>
+          <button
+            className="bttn-refresh"
+            onClick={this.actions.resetThisScreen}/>
+        </div>
         {
           this.state.isScreen
             ? <Screen {...screenProps}/>

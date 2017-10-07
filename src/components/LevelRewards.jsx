@@ -2,14 +2,29 @@ import './LevelRewards.scss';
 
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import rest from '../services/rest';
+
+const STAR_FILLED = '\u2605';
+const STAR_EMPTY = '\u2606';
 
 class LevelRewards extends Component {
   static propTypes = {
+    setName: PropTypes.string.isRequired,
+    actName: PropTypes.string.isRequired,
     spentTime: PropTypes.number.isRequired,
     attemptsFailured: PropTypes.number.isRequired,
     hasNextLevel: PropTypes.bool.isRequired,
     onComplete: PropTypes.func.isRequired,
     onReset: PropTypes.func.isRequired
+  }
+
+  componentDidMount() {
+    const p = this.props;
+    
+    rest.saveSetStats(p.setName, p.actName, {
+      spentTime: p.spentTime,
+      attemptsFailured: p.attemptsFailured
+    });
   }
 
   _getTime() {
@@ -24,15 +39,22 @@ class LevelRewards extends Component {
     let rewards;
 
     if (failured === 0) {
-      rewards = '\u2605 \u2605 \u2605';
+      rewards = [STAR_FILLED, STAR_FILLED, STAR_FILLED, STAR_FILLED, STAR_FILLED];
     } else
-    if (failured < 0.5) {
-      rewards = '\u2605 \u2605 \u2606';
-    } else {
-      rewards = '\u2605 \u2606 \u2606';
+    if (failured <= 0.2) {
+      rewards = [STAR_FILLED, STAR_FILLED, STAR_FILLED, STAR_FILLED, STAR_EMPTY];
+    } else
+    if (failured <= 0.4) {
+      rewards = [STAR_FILLED, STAR_FILLED, STAR_FILLED, STAR_EMPTY, STAR_EMPTY];
+    } else
+    if (failured <= 0.6) {
+      rewards = [STAR_FILLED, STAR_FILLED, STAR_EMPTY, STAR_EMPTY, STAR_EMPTY];
+    } else
+    if (failured <= 0.8) {
+      rewards = [STAR_FILLED, STAR_EMPTY, STAR_EMPTY, STAR_EMPTY, STAR_EMPTY];
     }
 
-    return rewards;
+    return rewards.join('');
   }
 
   _nextLevelButton() {
@@ -51,8 +73,10 @@ class LevelRewards extends Component {
 
   _finalScreen() {
     return (
-      <div className="feedback">
-        Поздравляю! Ты прошла все уровни :)
+      <div>
+        <button className="reset" onClick={this.props.onReset}>
+          Пройти еще разок! ☼
+        </button>
       </div>
     );
   }

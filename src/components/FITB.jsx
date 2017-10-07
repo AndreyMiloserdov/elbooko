@@ -13,6 +13,7 @@ const KEYBOARD = [
   [ 'z', 'x', 'c', 'v', 'b', 'n', 'm'],
   [ 'space-bar' ]
 ];
+const MIN_SYMBOL_INSERT_REPEAT = 2; // each symbol in word mast be inserted min times
 
 const BOX = [ 'empty', 'current', 'done' ];
 
@@ -20,7 +21,8 @@ class FITB extends Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
-    onComplete: PropTypes.func.isRequired
+    onComplete: PropTypes.func.isRequired,
+    instanceTimestamp: PropTypes.number.isRequired
   }
 
   static TYPE = 'fitb';
@@ -37,11 +39,26 @@ class FITB extends Component {
     this.state = this._newInstance(this.props.model.cards);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.instanceTimestamp !== this.props.instanceTimestamp) {
+      this._refresh();
+    }
+  }
+
+  _refresh() {
+    this.nextIteration = [];
+    this.attemptsOverall = 0;
+    this.attemptsFailured = 0;
+    this.timeStarted = Date.now();
+
+    this.setState(this._newInstance(this.props.model.cards));
+  }
+
   _newInstance(cardsToUse) {
-    const cardInx = 0;
+    const cardInx = 0; // start index of card
     const cards = shuffle(cardsToUse.slice(0)).map((card) => ({
       ...card,
-      symbolsInsertNum: isNaN(card.symbolsInsertNum) ? 1 : card.symbolsInsertNum + 1
+      symbolsInsertNum: isNaN(card.symbolsInsertNum) ? 1 : (card.symbolsInsertNum + 1)
     }));
     const card = cards[cardInx];
     const symbols = card.eng.split('');
@@ -120,6 +137,7 @@ class FITB extends Component {
       state.symbolsState = this.state.symbolsState.slice(0);
       state.symbolsState[sii] = false;
       state.symbolsInsertInx = state.symbolsState.indexOf(true);
+      state.disabledKeyboardBttns = this._newKeysState();
 
       if (state.symbolsInsertInx === -1) {
         state.showFeedback = true;

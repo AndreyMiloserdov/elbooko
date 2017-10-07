@@ -5,9 +5,39 @@
   src: url('../theme/fonts/Boogaloo-Regular.woff');
 }
 
+$base-menu-bttn-size: 32px;
+
 html, body,
 div[role="main"],
 div.app-cards,
 div.screen {
   @include full-screen;
+}
+
+.elbooko.app-cards {
+  position: relative;
+
+  .base-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    > button {
+      outline: none;
+      width: $base-menu-bttn-size;
+      height: $base-menu-bttn-size;
+      border: none;
+      margin: 4px;
+      background: none;
+      background-size: 100% 100%;
+
+      &.bttn-home {
+        background-image: url('../theme/images/icon-home.svg');
+      }
+
+      &.bttn-refresh {
+        background-image: url('../theme/images/icon-refresh.svg');
+      }
+    }
+  }
 }

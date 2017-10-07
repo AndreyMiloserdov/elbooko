@@ -16,7 +16,8 @@ class LabelPicture extends Component {
     model: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
     onComplete: PropTypes.func.isRequired,
-    variants: PropTypes.number
+    variants: PropTypes.number,
+    instanceTimestamp: PropTypes.number.isRequired
   }
 
   static TYPE = 'label-picture';
@@ -36,6 +37,21 @@ class LabelPicture extends Component {
     this.actions = {
       nextCard: this._nextCard.bind(this)
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.instanceTimestamp !== this.props.instanceTimestamp) {
+      this._refresh();
+    }
+  }
+
+  _refresh() {
+    this.cardsFailured = [];
+    this.attemptsOverall = 0;
+    this.attemptsFailured = 0;
+    this.timeStarted = Date.now();
+
+    this.setState(this._newInstance(this.props.model.cards));
   }
 
   _newInstance(cardsToUse) {
