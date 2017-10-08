@@ -15,6 +15,8 @@ import LabelPicture from '../components/LabelPicture';
 import ListenAndFind from '../components/ListenAndFind';
 import FITB from '../components/FITB';
 import Finish from '../components/Finish';
+import Translate from '../components/Translate';
+import TypeMissedSymbols from '../components/TypeMissedSymbols';
 
 const SCREENS = [
   {
@@ -22,7 +24,16 @@ const SCREENS = [
   },
   {
     view: KeepInMind
-  },
+  },/*
+  {
+    view: Translate,
+    showRewards: true,
+    props: {
+      mode: 'rus=>eng',
+      showText: true,
+      numberOfVariants: 3
+    }
+  },*/
   {
     view: LabelPicture,
     showRewards: true,
@@ -35,6 +46,14 @@ const SCREENS = [
     showRewards: true,
     props: {
       variants: 3
+    }
+  },
+  {
+    view: TypeMissedSymbols,
+    showRewards: true,
+    props: {
+      numberOfSymbols: 1,
+      numberOfRepeats: 3
     }
   },
   {
