@@ -1,0 +1,139 @@
+@import '../theme/index';
+
+$input-box-size: 42px;
+$keyboard-button-size: 42px;
+$keyboard-button-margin: 4px;
+
+.screen.type-missed-symbols {
+  > div {
+    @include full-screen;
+    @include flex-column;
+
+    > img {
+      height: 150px;
+      vertical-align: middle;
+      border: 1px solid grey;
+      box-shadow: 0 0 2px grey;
+      padding: 4px;
+    }
+
+    > .input-box {
+      margin: 16px 0;
+
+      > .input-answer {
+        height: $input-box-size;
+        display: inline-block;
+
+        > span {
+          display: inline-block;
+          width: $input-box-size;
+          height: $input-box-size;
+          text-align: center;
+          vertical-align: middle;
+          font-size: 30px;
+          line-height: $input-box-size;
+          margin: 0;
+          position: relative;
+          border-bottom: 1px solid grey;
+
+          &.empty:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 5px;
+            width: 1px;
+            border: none;
+            background: grey;
+          }
+
+          &.empty:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 5px;
+            width: 1px;
+            border: none;
+            background: grey;
+          }
+
+          &.current {
+            box-shadow: inset 0 -14px 14px -14px grey
+          }
+        }
+      }
+    }
+
+    > .keyboard {
+      button {
+        width: $keyboard-button-size;
+        height: $keyboard-button-size;
+        line-height: $keyboard-button-size;
+        text-align: center;
+        border: 1px solid grey;
+        box-shadow: 0 0 1px grey;
+        margin: 0 $keyboard-button-margin;
+        padding: 0;
+        outline: 0;
+        font-size: 28px;
+        border-radius: 2px;
+        color: #3c3c3c;
+
+        &:not(:disabled):hover {
+          border: 1px solid #3c3c3c;
+          box-shadow: 0 0 2px #3c3c3c;
+          color: #000;
+        }
+
+        &:disabled {
+          opacity: .6;
+          box-shadow: inset 0 0 2px red, 0 0 1px red;
+        }
+      }
+
+      > .row-of-bttns {
+        margin-bottom: $keyboard-button-margin * 2;
+
+        &:nth-child(2) {
+          padding-left: $keyboard-button-size * 0.5;
+        }
+
+        &:nth-child(3) {
+          padding-left: $keyboard-button-size * 1.0;
+        }
+
+        &:nth-child(4) {
+          padding-left: $keyboard-button-size * 2.7;
+
+          > .bttn-key-space-bar {
+            width:  $keyboard-button-size * 6; 
+          }
+        }
+      }
+    }
+
+    > .feedback {
+      @include flex-column;
+      height: 4 * ($keyboard-button-size + 2 * $keyboard-button-margin);
+
+      > button {
+        text-align: center;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 20px;
+        border: none;
+        background: #428bca;
+        color: #fff;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 22px;
+
+        &:hover {
+          background: #2f6b9e;
+        }
+      }
+    }
+  }
+}
+
+
